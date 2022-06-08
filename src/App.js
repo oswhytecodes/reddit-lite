@@ -4,7 +4,6 @@ import Header from './Components/Header/Header'
 
 
 function App() {
-const [data, setData] = useState([])
   useEffect(() => {
     fetch("https://www.reddit.com/r/popular.json")
       .then((res) => res.json())
