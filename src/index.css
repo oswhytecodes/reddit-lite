@@ -15,7 +15,8 @@ code {
 /* CUSTOM PROPERTIES */
 :root {
   --clr-accent-yellow: #f8b400;
-  --clr-accent-green: #125B50;
+  --clr-accent-orange: #F29200;
+  --clr-accent-green: #125b50;
 }
 
 /* CSS RESET */
@@ -29,7 +30,19 @@ code {
 /* HEADER */
 header {
   padding: 1.5em 1em;
+  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
   background: var(--clr-accent-yellow);
+}
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 /* FORM */
+.input-form {
+  padding: 0.8em;
+  border: 2px solid #eee;
+  margin-right: 2em;
+  border-radius: 8px;
+}
