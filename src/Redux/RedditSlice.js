@@ -1,38 +1,42 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 // import axios from 'axios'
 
 const initialState = {
-    redditData: [],
-    loading: false,
-    error: ''
-}
-export const fetchData = createAsyncThunk(
-    'reddit/fetchData',
-    async () => {
-        const data = await fetch("https://www.reddit.com/r/popular.json")
-        const json = await data.json()
-        console.log(json)
-    }
-)
-const RedditSlice = createSlice({
-    name: 'reddit',
-    initialState: initialState,
-    reducers: {},
-    extraReducers: {
-        [fetchData.pending]: (state, action) => {
-            state.loading = true;
-        },
-        [fetchData.fulfilled]: (state, action) => {
-            state.data = action.payload;
-            state.loading = false;
-            state.error = false;
-        },
-        [fetchData.rejected]: (state, action) => {
-            state.data = [];
-            state.loading = false;
-            state.error = action.error.message
-        }
-    }
-})
+  data: [],
+  loading: false,
+  error: "",
+  categories: "",
+};
 
-export default RedditSlice.reducer 
+//  you have to make two calls
+//  first call is for the home page, and the other is to link categories
+export const fetchData = createAsyncThunk("reddit/fetchData", async () => {
+  // const url = `https://www.reddit.com/r/${category}.json`
+  const data = await fetch(`https://www.reddit.com/r/memes.json`);
+  const json = await data.json();
+  const fetchedData = json.data.children
+  return fetchedData;
+});
+
+const RedditSlice = createSlice({
+  name: "reddit",
+  initialState: initialState,
+  reducers: {},
+  extraReducers: {
+    [fetchData.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [fetchData.fulfilled]: (state, action) => {
+      state.data = action.payload;
+      state.loading = false;
+      state.error = "";
+    },
+    [fetchData.rejected]: (state, action) => {
+      state.data = [];
+      state.loading = false;
+      state.error = action.error.message;
+    },
+  },
+});
+
+export default RedditSlice.reducer;
