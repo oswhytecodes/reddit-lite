@@ -1,22 +1,25 @@
-import './index.css';
-// import { useState, useEffect } from 'react'
-import Header from './Components/Header/Header'
-
+import "./index.css";
+import React from "react";
+//  impport components
+import Header from "./Components/Header/Header";
+import { SubredditContainer } from "./Components/SubredditContainer/SubredditContainer";
+import { PostContainer } from "./Components/PostContainer/PostContainer";
+// import selected state
 
 function App() {
-
   return (
     <div className="App">
       <header className="App-header">
         <Header />
       </header>
+      <section className="main-container"> 
+        <SubredditContainer />
+        <PostContainer />
+      </section>
     </div>
   );
 }
 
 export default App;
- // useEffect(() => {
-  //   fetch("https://www.reddit.com/r/popular.json")
-  //     .then((res) => res.json())
-  //     .then((data) => console.log(data.data.children));
-  // }, []);
+
+

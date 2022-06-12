@@ -5,7 +5,6 @@ import Form from '../Form/Form'
 const Header = () => {
 
     return (
-
         <div className='Header'>
             <img className='logo' src={logo} alt="logo" />
             <Form />
