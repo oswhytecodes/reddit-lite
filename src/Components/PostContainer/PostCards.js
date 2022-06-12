@@ -8,7 +8,7 @@ export const PostCards = () => {
 
   useEffect(() => {
     dispatch(fetchData());
-  }, []);
+  }, [dispatch]);
 
   const styles = {
     fontWeight: "bold",
@@ -16,6 +16,7 @@ export const PostCards = () => {
     display: "flex",
     justifyContent: "space-between",
     flexWrap: "wrap",
+    color: "#125b50",
   };
   return (
     <div>
@@ -39,11 +40,13 @@ export const PostCards = () => {
                     flexDirection: "column",
                     justifyContent: "center",
                     alignItems: "center",
+                    gap: "8px",
+                    fontSize: "1.2em",
                   }}
                 >
-                  <i class="fa-solid fa-arrow-up"></i>
-                  <p>{x.data.ups}</p>
-                  <i class="fa-solid fa-arrow-down"></i>
+                  <i className="fa-solid fa-arrow-up"></i>
+                  <p style={{ color: "#333" }}>{x.data.ups}</p>
+                  <i className="fa-solid fa-arrow-down"></i>
                 </div>
 
                 <div
@@ -51,20 +54,26 @@ export const PostCards = () => {
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    marginLeft: "2em",
-                    gap: "1.4em"
+                    marginLeft: "3.5em",
+                    gap: "1em",
                   }}
                 >
-                  <p >{x.data.title}</p>
+                  <p style={{ fontSize: "1.3rem" }}>{x.data.title}</p>
 
                   <img
                     className="thumbnails"
                     src={x.data.thumbnail}
                     alt="thumbnail"
+                    style={{}}
                   />
                   <div style={styles} className="row four">
                     <p>{x.data.author}</p>
-                    <p>{x.data.num_comments}</p>
+                    <div
+                      style={{ display: "flex", gap: "5px", padding: "0 5px" }}
+                    >
+                      <i className="fa-solid fa-comment"></i>
+                      <p>{x.data.num_comments}</p>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -5,6 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(
+    210deg,
+    var(--clr-accent-yellow),
+    var(--clr-accent-orange)
+  );
 }
 
 code {
@@ -45,10 +50,11 @@ header {
 
 /* FORM */
 .input-form {
-  padding: 0.6em;
+  padding: 1em;
   border: 1px solid #eee;
   margin-right: 2em;
   border-radius: 8px;
+  width: 18em;
 }
 
 /* Media Query for Header */
@@ -58,8 +64,9 @@ header {
   }
 
   .input-form {
-    /* width: 80%; */
-    margin-right: 0;
+    margin-right: 2em;
+    width: 15em;
+    padding: .8em;
     display: inline-block;
   }
   .logo {
@@ -72,7 +79,7 @@ header {
   margin-top: 2em;
   padding: 0 1em;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 450px);
+  grid-template-columns: repeat(auto-fill, 500px);
   grid-template-rows: 1fr;
   grid-column-gap: 10px;
   grid-row-gap: 0px;
@@ -80,7 +87,7 @@ header {
 }
 @media screen and (max-width: 768px) {
   .main-container {
-    grid-template-columns: repeat(auto-fill, 300px);
+    grid-template-columns: repeat(auto-fill, 350px);
   }
 }
 
@@ -95,9 +102,5 @@ header {
   padding: 1em 1.5em;
   box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
   border-radius: 10px;
-  background: linear-gradient(
-    210deg,
-    var(--clr-accent-yellow),
-    var(--clr-accent-orange)
-  );
+  background-color: #fff;
 }
