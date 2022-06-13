@@ -4,13 +4,14 @@ const initialState = {
   data: [],
   loading: false,
   error: "",
-  // category: "memes",
+  category: "happy",
 };
 
-export const fetchData = createAsyncThunk("reddit/fetchData", async () => {
-  // const url = `https://www.reddit.com/r/${category}.json`
-  
-  const data = await fetch(`https://www.reddit.com/r/happy.json`);
+export const fetchData = createAsyncThunk("reddit/fetchData", async (category) => {
+  const url = `https://www.reddit.com/r/${category}.json`
+// `https://www.reddit.com/r/happy.json`
+
+  const data = await fetch(url);
   const json = await data.json();
   const fetchedData = json.data.children;
   return fetchedData;

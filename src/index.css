@@ -81,7 +81,7 @@ header {
 
 /* main container holding the subreddit and post containers */
 .main-container {
-  margin-top: 7em;
+  margin-top: 10em;
   padding: 0 1em;
   display: grid;
   grid-template-columns: repeat(auto-fill, 400px);
@@ -110,7 +110,11 @@ header {
   justify-content: space-between;
 }
 .category-card {
-  display: inline-block;
+  text-align: left;
+  display: inline;
+  border: none;
+
+  background-color: rgba(255, 255, 255, 0.354);
   color: #000;
   font-weight: bold;
   gap: 10px;

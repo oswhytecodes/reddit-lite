@@ -4,11 +4,12 @@ import { fetchData } from "../../Redux/RedditSlice";
 
 export const PostCards = () => {
   const redditData = useSelector((state) => state.reddit.data);
+  const categorySubreddit = useSelector(state => state.reddit.category)
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchData());
-  }, [dispatch]);
+    dispatch(fetchData(categorySubreddit));
+  }, [dispatch, categorySubreddit]);
 
   const styles = {
     fontWeight: "bold",
