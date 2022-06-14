@@ -65,14 +65,15 @@ header {
 /* Media Query for Header */
 @media screen and (max-width: 768px) {
   header {
-    padding: 1em 0.5em;
+    padding: 1em 0.8em;
   }
 
   .input-form {
-    margin-right: 2em;
-    width: 15em;
+    margin-right: 0;
+    width: 14em;
     padding: 0.8em;
     display: inline-block;
+    font-size: 12px;
   }
   .logo {
     width: 120px;
@@ -84,24 +85,20 @@ header {
   margin-top: 10em;
   padding: 0 1em;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 400px);
-  grid-template-rows: 1fr;
-  grid-column-gap: 2em;
-  grid-row-gap: 1em;
   justify-content: center;
 }
 @media screen and (max-width: 768px) {
   .main-container {
-    grid-template-columns: repeat(auto-fill, 350px);
+    margin-top: 7em;
   }
 }
 /* ======SUBREDDIT======================================= */
 .SubredditContainer {
-  /* background-color: #fff; */
   position: fixed;
   box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
   height: 42em;
   width: 20em;
+  background-color: rgba(255, 255, 255, 0.127);
   border-radius: 6px;
 }
 .SubredditCard {
@@ -136,33 +133,51 @@ header {
   }
 }
 /* =============POSTS=================================== */
+.PostContainer {
+  /* outline: 3px #000 solid; */
+  grid-column: 2/3;
+}
+
 .post-card {
+  margin-left: 19em;
+  max-width: 500px;
+
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
   gap: 1em;
   margin-bottom: 2em;
-  margin-left: 23em;
   padding: 1em 1.5em;
   box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
   border-radius: 10px;
   background-color: #fff;
-  transition: all 0.3s ease-in;
+  transition: all 0.4s ease-in;
+}
+.post-card img {
+  width: 16em;
+  align-self: flex-start;
 }
 .post-card:hover {
   transform: scale(1.05);
 }
+
 .thumbnails {
   border-radius: 3px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+
 @media screen and (max-width: 768px) {
   .post-card {
-    margin-inline: auto;
+    margin-left: 0em;
   }
 }
-
+@media screen and (max-width: 820px) {
+  .post-card {
+    max-width: 350px;
+  }
+}
 /*  ROWS */
 
 .upvotes {

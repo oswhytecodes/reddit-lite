@@ -20,7 +20,7 @@ export const PostCards = () => {
     color: "#125b50",
   };
   return (
-    <div>
+    <div className="PostCard">
       {redditData.map((x) => {
         return (
           <div className="post-card" key={x.data.id}>

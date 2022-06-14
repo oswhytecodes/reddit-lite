@@ -2,14 +2,9 @@ import React from "react";
 import { PostCards } from "./PostCards";
 
 export const PostContainer = () => {
-  
   return (
     <section className="PostContainer">
-      
-      <div>
-        <PostCards />
-      </div>
-  
+      <PostCards />
     </section>
   );
 };
