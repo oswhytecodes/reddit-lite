@@ -31,7 +31,7 @@ export const PostCards = () => {
     <div className="PostCard">
       {/* data that is currently loading */}
 
-      {redditLoading && <p className="loading">Loading...</p>}
+      {/* {redditLoading  && <p className="loading">Loading...</p>} */}
       {/* error handling */}
       {!redditLoading && redditError ? <p>Error: {redditError} </p> : null}
       {/*  data that is loaded */}

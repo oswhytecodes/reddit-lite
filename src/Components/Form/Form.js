@@ -25,7 +25,7 @@ const Form = () => {
         <input
           className="input-form"
           type="text"
-          placeholder="Search topic..."
+          placeholder="Search subreddit..."
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
@@ -37,7 +37,7 @@ const Form = () => {
           display: suggestions.length > 0 ? "flex" : "none",
           position: "fixed",
           flexDirection: "column",
-        
+
           background: "#fff",
           padding: "1em",
           width: "15em",
@@ -53,7 +53,7 @@ const Form = () => {
             onClick={() => {
               dispatch(fetchData(name));
               setValue("");
-              window.scrollTo(0, 0)
+              window.scrollTo(0, 0);
             }}
           >
             {name}
