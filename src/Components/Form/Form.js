@@ -1,15 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchData } from "../../Redux/RedditSlice";
+import { fetchData, fetchNewSuggestions } from "../../Redux/RedditSlice";
+
 const Form = () => {
   const [value, setValue] = useState("");
-  const filteredSubReddit = useSelector((state) => state.reddit.data);
+  const dispatch = useDispatch();
+  const suggestions = useSelector((state) => state.reddit.suggestions);
 
+  // submit a new subreddit to the dom
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(fetchData(value));
     setValue("");
-    console.log(value);
   };
+
+  // add search options when searching in the input field
+  useEffect(() => {
+    dispatch(fetchNewSuggestions(value));
+  }, [dispatch, value]);
+
   return (
     <div className="Form">
       <form onSubmit={handleSubmit}>
@@ -21,6 +30,36 @@ const Form = () => {
           onChange={(e) => setValue(e.target.value)}
         />
       </form>
+
+      <div
+        className="input-suggestions"
+        style={{
+          display: suggestions.length > 0 ? "flex" : "none",
+          position: "fixed",
+          flexDirection: "column",
+        
+          background: "#fff",
+          padding: "1em",
+          width: "15em",
+          borderRadius: "8px",
+          marginTop: "5px",
+        }}
+      >
+        {suggestions.map((name, index) => (
+          <li
+            className="input-lists"
+            style={{ listStyle: "none" }}
+            key={index}
+            onClick={() => {
+              dispatch(fetchData(name));
+              setValue("");
+              window.scrollTo(0, 0)
+            }}
+          >
+            {name}
+          </li>
+        ))}
+      </div>
     </div>
   );
 };

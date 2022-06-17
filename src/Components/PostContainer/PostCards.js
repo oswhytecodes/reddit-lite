@@ -1,10 +1,18 @@
 import React, { useEffect } from "react";
+import Logo from "../../assets/images/logo.png";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchData } from "../../Redux/RedditSlice";
 
 export const PostCards = () => {
   const redditData = useSelector((state) => state.reddit.data);
-  const categorySubreddit = useSelector(state => state.reddit.category)
+  const redditLoading = useSelector((state) => state.reddit.loading);
+  const redditError = useSelector((state) => state.reddit.error);
+
+  // const { redditData, redditLoading, redditError } = useSelector(
+  //   (state) => state.reddit
+  // );
+
+  const categorySubreddit = useSelector((state) => state.reddit.category);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,6 +29,12 @@ export const PostCards = () => {
   };
   return (
     <div className="PostCard">
+      {/* data that is currently loading */}
+
+      {redditLoading && <p className="loading">Loading...</p>}
+      {/* error handling */}
+      {!redditLoading && redditError ? <p>Error: {redditError} </p> : null}
+      {/*  data that is loaded */}
       {redditData.map((x) => {
         return (
           <div className="post-card" key={x.data.id}>
@@ -43,9 +57,19 @@ export const PostCards = () => {
                 <div className="column-two">
                   <p style={{ fontSize: "1.3rem" }}>{x.data.title}</p>
 
+                  {/* {console.log((/\.(gif|jpe?g|tiff?|png|webp|bmp)$/i).test(x.data.thumbnail))} */}
                   <img
                     className="thumbnails"
-                    src={x.data.thumbnail}
+                    loading="lazy"
+                    // src={x.data.thumbnail}
+                    src={
+                      // regex to handle the thumbnails that are empty
+                      /\.(gif|jpe?g|tiff?|png|webp|bmp)$/i.test(
+                        x.data.thumbnail
+                      )
+                        ? x.data.thumbnail
+                        : Logo
+                    }
                     alt="thumbnail"
                     style={{}}
                   />
@@ -62,6 +86,7 @@ export const PostCards = () => {
           </div>
         );
       })}
+      {/* <i className="fa-solid fa-spinner"></i> */}
     </div>
   );
 };
