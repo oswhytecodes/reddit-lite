@@ -1,14 +1,23 @@
 import React, { useEffect } from "react";
+import Logo from "../../assets/images/logo.png";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchData } from "../../Redux/RedditSlice";
 
 export const PostCards = () => {
   const redditData = useSelector((state) => state.reddit.data);
+  const redditLoading = useSelector((state) => state.reddit.loading);
+  const redditError = useSelector((state) => state.reddit.error);
+
+  // const { redditData, redditLoading, redditError } = useSelector(
+  //   (state) => state.reddit
+  // );
+
+  const categorySubreddit = useSelector((state) => state.reddit.category);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchData());
-  }, []);
+    dispatch(fetchData(categorySubreddit));
+  }, [dispatch, categorySubreddit]);
 
   const styles = {
     fontWeight: "bold",
@@ -16,9 +25,16 @@ export const PostCards = () => {
     display: "flex",
     justifyContent: "space-between",
     flexWrap: "wrap",
+    color: "#125b50",
   };
   return (
-    <div>
+    <div className="PostCard">
+      {/* data that is currently loading */}
+
+      {/* {redditLoading  && <p className="loading">Loading...</p>} */}
+      {/* error handling */}
+      {!redditLoading && redditError ? <p>Error: {redditError} </p> : null}
+      {/*  data that is loaded */}
       {redditData.map((x) => {
         return (
           <div className="post-card" key={x.data.id}>
@@ -32,39 +48,37 @@ export const PostCards = () => {
               className="row two"
             >
               <div style={{ display: "flex" }} className="column one">
-                <div
-                  className="upvotes"
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <i class="fa-solid fa-arrow-up"></i>
-                  <p>{x.data.ups}</p>
-                  <i class="fa-solid fa-arrow-down"></i>
+                <div className="upvotes">
+                  <i className="fa-solid fa-arrow-up"></i>
+                  <p style={{ color: "#333" }}>{x.data.ups}</p>
+                  <i className="fa-solid fa-arrow-down"></i>
                 </div>
 
-                <div
-                  className="column two"
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    marginLeft: "2em",
-                    gap: "1.4em"
-                  }}
-                >
-                  <p >{x.data.title}</p>
+                <div className="column-two">
+                  <p style={{ fontSize: "1.3rem" }}>{x.data.title}</p>
 
+                  {/* {console.log((/\.(gif|jpe?g|tiff?|png|webp|bmp)$/i).test(x.data.thumbnail))} */}
                   <img
                     className="thumbnails"
-                    src={x.data.thumbnail}
+                    loading="lazy"
+                    // src={x.data.thumbnail}
+                    src={
+                      // regex to handle the thumbnails that are empty
+                      /\.(gif|jpe?g|tiff?|png|webp|bmp)$/i.test(
+                        x.data.thumbnail
+                      )
+                        ? x.data.thumbnail
+                        : Logo
+                    }
                     alt="thumbnail"
+                    style={{}}
                   />
                   <div style={styles} className="row four">
                     <p>{x.data.author}</p>
-                    <p>{x.data.num_comments}</p>
+                    <div className="comments">
+                      <i className="fa-solid fa-comment"></i>
+                      <p>{x.data.num_comments}</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -72,6 +86,7 @@ export const PostCards = () => {
           </div>
         );
       })}
+      {/* <i className="fa-solid fa-spinner"></i> */}
     </div>
   );
 };
