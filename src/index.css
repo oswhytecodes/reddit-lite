@@ -5,10 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(
-    -120deg,
-    var(--clr-accent-yellow),
-    var(--clr-accent-orange)
+  background: var(--clr-accent-orange)
   );
 }
 
@@ -20,7 +17,7 @@ code {
 /* CUSTOM PROPERTIES */
 :root {
   --clr-accent-yellow: #f8b400;
-  --clr-accent-orange: #f29200;
+  --clr-accent-orange: #FACC93;
   --clr-accent-green: #125b50;
 }
 
