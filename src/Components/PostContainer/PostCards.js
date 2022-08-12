@@ -25,7 +25,7 @@ export const PostCards = () => {
     display: "flex",
     justifyContent: "space-between",
     flexWrap: "wrap",
-    color: "#125b50",
+    color: "#402839",
   };
   return (
     <div className="PostCard">
@@ -68,13 +68,17 @@ export const PostCards = () => {
                         x.data.thumbnail
                       )
                         ? x.data.thumbnail
-                        : Logo
+                        : Logo 
                     }
                     alt="thumbnail"
                     style={{}}
                   />
                   <div style={styles} className="row four">
-                    <p>{x.data.author}</p>
+                    <p>
+                      <span
+                      style={{fontWeight: "200", fontSize: ""}}
+                      >Posted by</span> {x.data.author}
+                    </p>
                     <div className="comments">
                       <i className="fa-solid fa-comment"></i>
                       <p>{x.data.num_comments}</p>

@@ -1,14 +1,15 @@
-import React from 'react'
-import logo from '../../assets/images/logo.png'
-import Form from '../Form/Form'
+import React from "react";
+import logo from "../../assets/images/logo.png";
+import Form from "../Form/Form";
+import { Link } from "react-router-dom";
 
-const Header = () => {
-
-    return (
-        <div className='Header'>
-            <img className='logo' src={logo} alt="logo" />
-            <Form />
-        </div>
-    )
-}
-export default Header
+export const Header = () => {
+  return (
+    <div className="Header">
+      <Link to="/">
+        <img className="logo" src={logo} alt="logo" />
+      </Link>
+      <Form />
+    </div>
+  );
+};

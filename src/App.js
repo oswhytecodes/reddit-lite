@@ -1,25 +1,19 @@
 import "./index.css";
 import React from "react";
-//  impport components
-import Header from "./Components/Header/Header";
-import { SubredditContainer } from "./Components/SubredditContainer/SubredditContainer";
-import { PostContainer } from "./Components/PostContainer/PostContainer";
+import { Routes, Route } from "react-router-dom";
+//  import components
+import { Home } from "./Home";
+import { PostCards } from "./Components/PostContainer/PostCards";
+// import { Form } from "./Components/Form/Form";
 // import selected state
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Header />
-      </header>
-      <section className="main-container"> 
-        <SubredditContainer />
-        <PostContainer />
-      </section>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />}></Route>
+      <Route path="/subreddit/:name" element={<PostCards />}></Route>
+    </Routes>
   );
 }
 
 export default App;
-
-

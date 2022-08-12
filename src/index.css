@@ -7,8 +7,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(
     -120deg,
-    var(--clr-accent-yellow),
-    var(--clr-accent-orange)
+    var(--clr-accent-default),
+    var(--clr-accent-default-2)
   );
 }
 
@@ -19,9 +19,9 @@ code {
 
 /* CUSTOM PROPERTIES */
 :root {
-  --clr-accent-yellow: #f8b400;
-  --clr-accent-orange: #f29200;
-  --clr-accent-green: #125b50;
+  --clr-accent-default: #c0b3bc;
+  --clr-accent-default-2: #7c7479;
+  --clr-accent-dark: #402839;
 }
 
 /* CSS RESET */
@@ -39,7 +39,7 @@ img {
 header {
   padding: 1.5em 1em;
   box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
-  background: var(--clr-accent-yellow);
+  background: #fff;
   width: 100%;
   display: inline-block;
   position: fixed;
@@ -56,7 +56,7 @@ header {
 /* FORM */
 .input-form {
   padding: 1em;
-  border: 1px solid #eee;
+  border: 1px solid rgb(106, 106, 106);
   margin-right: 2em;
   border-radius: 8px;
   width: 18em;
@@ -77,7 +77,7 @@ header {
   transition: all 0.3s ease-in;
 }
 .input-lists:hover {
-  background-color: var(--clr-accent-green);
+  background-color: var(--clr-accent-dark);
   color: #fff;
   /* transform: scale(1.01); */
 }
@@ -114,10 +114,11 @@ header {
 .SubredditContainer {
   position: fixed;
   box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
-  height: 42em;
+  padding: 1em 0.3em;
+  /* height: 42em; */
   width: 20em;
   background-color: rgba(255, 255, 255, 0.127);
-  border-radius: 6px;
+  border-radius: 1px;
 }
 .SubredditCard {
   display: flex;
@@ -135,11 +136,11 @@ header {
   gap: 10px;
   margin: 1em 2em;
   padding: 1em 1.5em;
-  border-radius: 10px;
+  border-radius: 1px;
   transition: all 0.3s ease-in;
 }
 .category-card:hover {
-  background-color: var(--clr-accent-green);
+  background-color: var(--clr-accent-dark);
   color: #fff;
   transform: scale(1.05);
 }
@@ -156,10 +157,12 @@ header {
   grid-column: 2/3;
 }
 .loading {
-  /* position: absolute; */
-  font-size: 2em;
-  margin-left: 10em;
-  margin-bottom: 1em;
+  position: fixed;
+  top: 15;
+  left: 200;
+  font-size: 1em;
+  /* margin-left: 20em;
+  margin-bottom: 1em; */
 }
 .post-card {
   margin-left: 19em;
@@ -174,7 +177,7 @@ header {
   margin-bottom: 2em;
   padding: 1em 1.5em;
   box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
-  border-radius: 10px;
+  border-radius: 1px;
   background-color: #fff;
   transition: all 0.4s ease-in;
 }
@@ -197,7 +200,7 @@ header {
 }
 @media screen and (max-width: 820px) {
   .post-card {
-    max-width: 300px;
+    max-width: 340px;
   }
 }
 

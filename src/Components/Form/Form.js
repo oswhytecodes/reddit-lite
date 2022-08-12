@@ -19,6 +19,17 @@ const Form = () => {
     dispatch(fetchNewSuggestions(value));
   }, [dispatch, value]);
 
+  const styles = {
+    display: suggestions.length > 0 ? "flex" : "none",
+    position: "fixed",
+    flexDirection: "column",
+  
+    background: "#fff",
+    padding: "1em",
+    width: "15em",
+    borderRadius: "8px",
+    marginTop: "5px",
+  }
   return (
     <div className="Form">
       <form onSubmit={handleSubmit}>
@@ -33,17 +44,7 @@ const Form = () => {
 
       <div
         className="input-suggestions"
-        style={{
-          display: suggestions.length > 0 ? "flex" : "none",
-          position: "fixed",
-          flexDirection: "column",
-        
-          background: "#fff",
-          padding: "1em",
-          width: "15em",
-          borderRadius: "8px",
-          marginTop: "5px",
-        }}
+        style={styles}
       >
         {suggestions.map((name, index) => (
           <li
